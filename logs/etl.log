@@ -35,3 +35,85 @@ LINE 1: ...name", "age", "gender", "weight_kg", "height_cm", "objective...
 2026-04-08 20:53:42 [INFO] etl | load | table=users rows=5 columns=['email', 'first_name', 'last_name', 'age', 'gender', 'weight_kg', 'height_cm']
 2026-04-08 20:53:42 [INFO] etl | load | table=users inserted=5
 2026-04-08 20:53:42 [INFO] etl | pipeline | END dataset=users status=success rows_raw=7 rows_clean=5 rows_inserted=5 rejected=2 duration=0.298s
+2026-04-08 21:02:32 [INFO] app | upload | dataset=users file=nutrition.csv
+2026-04-08 21:02:32 [INFO] etl | pipeline | START dataset=users file=/home/enys/ddddddddddd/uploads/nutrition.csv
+2026-04-08 21:02:32 [INFO] etl | extract | file=nutrition.csv format=.csv
+2026-04-08 21:02:32 [ERROR] etl | extract | failed to read /home/enys/ddddddddddd/uploads/nutrition.csv — Error tokenizing data. C error: Expected 12 fields in line 21, saw 13
+
+2026-04-08 21:02:32 [ERROR] etl | pipeline | UNEXPECTED ERROR dataset=users
+Traceback (most recent call last):
+  File "/home/enys/ddddddddddd/etl/pipeline.py", line 57, in run_pipeline
+    df_raw = extract(file_path)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/enys/ddddddddddd/etl/extract.py", line 61, in extract
+    df: pd.DataFrame = reader(file_path)
+                       ^^^^^^^^^^^^^^^^^
+  File "/home/enys/ddddddddddd/.venv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enys/ddddddddddd/.venv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 626, in _read
+    return parser.read(nrows)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/enys/ddddddddddd/.venv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1923, in read
+    ) = self._engine.read(  # type: ignore[attr-defined]
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enys/ddddddddddd/.venv/lib/python3.12/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 234, in read
+    chunks = self._reader.read_low_memory(nrows)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 838, in pandas._libs.parsers.TextReader.read_low_memory
+  File "parsers.pyx", line 905, in pandas._libs.parsers.TextReader._read_rows
+  File "parsers.pyx", line 874, in pandas._libs.parsers.TextReader._tokenize_rows
+  File "parsers.pyx", line 891, in pandas._libs.parsers.TextReader._check_tokenize_status
+  File "parsers.pyx", line 2061, in pandas._libs.parsers.raise_parser_error
+pandas.errors.ParserError: Error tokenizing data. C error: Expected 12 fields in line 21, saw 13
+
+2026-04-08 21:02:32 [INFO] etl | pipeline | END dataset=users status=error rows_raw=0 rows_clean=0 rows_inserted=0 rejected=0 duration=0.037s
+2026-04-08 21:03:50 [INFO] app | HealthAI Coach API shutting down
+2026-04-08 21:03:53 [INFO] app | HealthAI Coach API starting up
+2026-04-08 21:07:52 [INFO] app | HealthAI Coach API shutting down
+2026-04-08 21:07:55 [INFO] app | HealthAI Coach API starting up
+2026-04-08 21:08:07 [INFO] app | HealthAI Coach API shutting down
+2026-04-08 21:08:08 [INFO] app | HealthAI Coach API starting up
+2026-04-08 21:08:12 [INFO] app | HealthAI Coach API shutting down
+2026-04-08 21:08:15 [INFO] app | HealthAI Coach API starting up
+2026-04-08 21:09:03 [INFO] app | upload | dataset=users file=nutrition.csv
+2026-04-08 21:09:03 [INFO] etl | pipeline | START dataset=users file=/home/enys/ddddddddddd/uploads/nutrition.csv
+2026-04-08 21:09:03 [INFO] etl | extract | file=nutrition.csv format=.csv
+2026-04-08 21:09:03 [INFO] etl | extract | rows_raw=645 columns=12
+2026-04-08 21:09:03 [INFO] etl | validate | dataset=users extra_columns=['calories_kcal', 'carbohydrates_g', 'category', 'cholesterol_mg', 'fat_g', 'fiber_g', 'food_item', 'meal_type', 'protein_g', 'sodium_mg', 'sugars_g', 'water_intake_ml'] (tolerated)
+2026-04-08 21:09:03 [ERROR] etl | validate | dataset=users missing_columns=['age', 'email', 'first_name', 'gender', 'height_cm', 'last_name', 'objective', 'weight_kg']
+2026-04-08 21:09:03 [ERROR] etl | pipeline | FAILED dataset=users error=Schema validation failed for dataset 'users'. Missing required columns: ['age', 'email', 'first_name', 'gender', 'height_cm', 'last_name', 'objective', 'weight_kg']
+2026-04-08 21:09:03 [INFO] etl | pipeline | END dataset=users status=error rows_raw=645 rows_clean=0 rows_inserted=0 rejected=0 duration=0.023s
+2026-04-08 21:09:56 [INFO] app | upload | dataset=foods file=nutrition.csv
+2026-04-08 21:09:56 [INFO] etl | pipeline | START dataset=foods file=/home/enys/ddddddddddd/uploads/nutrition.csv
+2026-04-08 21:09:56 [INFO] etl | extract | file=nutrition.csv format=.csv
+2026-04-08 21:09:56 [INFO] etl | extract | rows_raw=645 columns=12
+2026-04-08 21:09:56 [INFO] etl | validate | dataset=foods extra_columns=['category', 'cholesterol_mg', 'water_intake_ml'] (tolerated)
+2026-04-08 21:09:56 [INFO] etl | validate | dataset=foods OK — required=9 extra=3
+2026-04-08 21:09:56 [INFO] etl | clean | dataset=foods rows_in=645
+2026-04-08 21:09:56 [INFO] etl | clean | duplicates_dropped=54
+2026-04-08 21:09:56 [INFO] etl | clean | dataset=foods rows_out=591 rejected=54
+2026-04-08 21:09:56 [INFO] etl | load | table=foods rows=591 columns=['name', 'name', 'category', 'category', 'calories_kcal', 'calories_kcal', 'proteins_g', 'proteins_g', 'carbs_g', 'carbs_g', 'fats_g', 'fats_g', 'fiber_g', 'fiber_g', 'sugars_g', 'sugars_g', 'sodium_mg', 'sodium_mg', 'cholesterol_mg', 'cholesterol_mg', 'meal_type', 'meal_type', 'water_intake_ml', 'water_intake_ml']
+2026-04-08 21:09:56 [ERROR] etl | load | table=foods ROLLBACK — column "name" specified more than once
+LINE 1: INSERT INTO "foods" ("name", "name", "category", "category",...
+                                     ^
+
+2026-04-08 21:09:56 [ERROR] etl | pipeline | FAILED dataset=foods error=Failed to load data into table 'foods': column "name" specified more than once
+LINE 1: INSERT INTO "foods" ("name", "name", "category", "category",...
+                                     ^
+
+2026-04-08 21:09:56 [INFO] etl | pipeline | END dataset=foods status=error rows_raw=645 rows_clean=591 rows_inserted=0 rejected=54 duration=0.513s
+2026-04-08 21:11:19 [INFO] app | HealthAI Coach API shutting down
+2026-04-08 21:11:22 [INFO] app | HealthAI Coach API starting up
+2026-04-08 21:11:53 [INFO] app | upload | dataset=foods file=nutrition.csv
+2026-04-08 21:11:53 [INFO] etl | pipeline | START dataset=foods file=/home/enys/ddddddddddd/uploads/nutrition.csv
+2026-04-08 21:11:53 [INFO] etl | extract | file=nutrition.csv format=.csv
+2026-04-08 21:11:53 [INFO] etl | extract | rows_raw=645 columns=12
+2026-04-08 21:11:53 [INFO] etl | validate | dataset=foods extra_columns=['category', 'cholesterol_mg', 'water_intake_ml'] (tolerated)
+2026-04-08 21:11:53 [INFO] etl | validate | dataset=foods OK — required=9 extra=3
+2026-04-08 21:11:53 [INFO] etl | clean | dataset=foods rows_in=645
+2026-04-08 21:11:53 [INFO] etl | clean | duplicates_dropped=54
+2026-04-08 21:11:53 [INFO] etl | clean | dataset=foods rows_out=591 rejected=54
+2026-04-08 21:11:53 [INFO] etl | load | table=foods rows=591 columns=['name', 'category', 'calories_kcal', 'proteins_g', 'carbs_g', 'fats_g', 'fiber_g', 'sugars_g', 'sodium_mg', 'cholesterol_mg', 'meal_type', 'water_intake_ml']
+2026-04-08 21:11:53 [INFO] etl | load | table=foods inserted=91
+2026-04-08 21:11:53 [INFO] etl | pipeline | END dataset=foods status=success rows_raw=645 rows_clean=591 rows_inserted=91 rejected=54 duration=0.484s

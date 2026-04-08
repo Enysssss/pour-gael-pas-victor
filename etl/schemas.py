@@ -93,12 +93,71 @@ ALLOWED_VALUES: dict[str, dict[str, list[str]]] = {
         "gender": ["male", "female", "other"],
     },
     "foods": {
-        "meal_type": ["breakfast", "lunch", "dinner", "snack", "other"],
+        "meal_type": ["breakfast", "lunch", "dinner", "snack", "side", "other"],
     },
     "exercises": {
         "difficulty": ["beginner", "intermediate", "advanced"],
     },
     "metrics": {},
+}
+
+# ---------------------------------------------------------------------------
+# Column aliases per dataset: raw_normalized_name -> canonical_name
+#
+# Applied during validation so that files with different naming conventions
+# (e.g. "Protein (g)", "protein_g", "proteins_g") all map to the same
+# canonical column expected by the clean + load stages.
+# ---------------------------------------------------------------------------
+
+COLUMN_ALIASES: dict[str, dict[str, str]] = {
+    "users": {
+        # common variants
+        "firstname": "first_name",
+        "lastname": "last_name",
+        "user_email": "email",
+        "height": "height_cm",
+        "weight": "weight_kg",
+        "goal": "objective",
+    },
+    "foods": {
+        # nutrition.csv and similar exports
+        "food_item": "name",
+        "food_name": "name",
+        "item": "name",
+        "calories_kcal": "calories_kcal",           # already correct
+        "protein_g": "proteins_g",
+        "proteins_g": "proteins_g",                 # already correct
+        "carbohydrates_g": "carbs_g",
+        "carbs_g": "carbs_g",                       # already correct
+        "fat_g": "fats_g",
+        "fats_g": "fats_g",                         # already correct
+        "fiber_g": "fiber_g",                       # already correct
+        "sugars_g": "sugars_g",                     # already correct
+        "sodium_mg": "sodium_mg",                   # already correct
+        "cholesterol_mg": "cholesterol_mg",         # extra col, tolerated
+        "water_intake_ml": "water_intake_ml",       # extra col, tolerated
+        "category": "category",                     # extra col, tolerated
+        "meal_type": "meal_type",                   # already correct
+    },
+    "exercises": {
+        "exercise_name": "name",
+        "muscle_group": "body_part",
+        "level": "difficulty",
+        "gear": "equipment",
+        "desc": "instructions",
+        "description": "instructions",
+    },
+    "metrics": {
+        "userid": "user_id",
+        "bodyfat": "body_fat_pct",
+        "body_fat": "body_fat_pct",
+        "hr_avg": "heart_rate_avg",
+        "hr_max": "heart_rate_max",
+        "hr_resting": "heart_rate_resting",
+        "kcal_burned": "calories_burned",
+        "workout_days": "workout_frequency",
+        "water_l": "water_intake_l",
+    },
 }
 
 # ---------------------------------------------------------------------------

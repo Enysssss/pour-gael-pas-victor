@@ -52,13 +52,14 @@ def _get_connection() -> psycopg2.extensions.connection:
 
 
 def _get_table_columns(conn, table_name: str) -> list[str]:
-    """Query information_schema to get the actual columns of the target table."""
+    """Query information_schema to get the actual columns of the target table (public schema only)."""
     with conn.cursor() as cur:
         cur.execute(
             """
             SELECT column_name
             FROM information_schema.columns
-            WHERE table_name = %s
+            WHERE table_schema = 'public'
+              AND table_name = %s
             ORDER BY ordinal_position
             """,
             (table_name,),

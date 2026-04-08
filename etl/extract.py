@@ -58,7 +58,12 @@ def extract(file_path: str) -> pd.DataFrame:
     logger.info("extract | file=%s format=%s", path.name, ext)
 
     try:
-        df: pd.DataFrame = reader(file_path)
+        if ext == ".csv":
+            df: pd.DataFrame = pd.read_csv(file_path, on_bad_lines="skip", engine="python")
+        elif ext == ".json":
+            df = pd.read_json(file_path)
+        else:
+            df = pd.read_excel(file_path)
     except Exception as exc:
         logger.error("extract | failed to read %s — %s", file_path, exc)
         raise
