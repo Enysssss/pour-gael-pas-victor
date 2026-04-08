@@ -1,0 +1,37 @@
+2026-04-08 20:49:08 [INFO] app | HealthAI Coach API starting up
+2026-04-08 20:51:41 [INFO] app | upload | dataset=users file=test_users.csv
+2026-04-08 20:51:41 [INFO] etl | pipeline | START dataset=users file=/home/enys/ddddddddddd/uploads/test_users.csv
+2026-04-08 20:51:41 [INFO] etl | extract | file=test_users.csv format=.csv
+2026-04-08 20:51:41 [INFO] etl | extract | rows_raw=7 columns=8
+2026-04-08 20:51:41 [INFO] etl | validate | dataset=users columns_ok=8
+2026-04-08 20:51:41 [INFO] etl | clean | dataset=users rows_in=7
+2026-04-08 20:51:41 [WARNING] etl | clean | users invalid_emails_dropped=1
+2026-04-08 20:51:41 [WARNING] etl | clean | col=age bound=[10,100] rows_dropped=1
+2026-04-08 20:51:41 [INFO] etl | clean | dataset=users rows_out=5 rejected=2
+2026-04-08 20:51:41 [INFO] etl | load | table=users rows=5
+2026-04-08 20:51:41 [ERROR] etl | load | table=users ROLLBACK — column "objective" of relation "users" does not exist
+LINE 1: ...name", "age", "gender", "weight_kg", "height_cm", "objective...
+                                                             ^
+
+2026-04-08 20:51:41 [ERROR] etl | pipeline | FAILED dataset=users error=Failed to load data into table 'users': column "objective" of relation "users" does not exist
+LINE 1: ...name", "age", "gender", "weight_kg", "height_cm", "objective...
+                                                             ^
+
+2026-04-08 20:51:41 [INFO] etl | pipeline | END dataset=users status=error rows_raw=7 rows_clean=5 rows_inserted=0 rejected=2 duration=0.296s
+2026-04-08 20:52:37 [INFO] app | HealthAI Coach API shutting down
+2026-04-08 20:52:42 [INFO] app | HealthAI Coach API starting up
+2026-04-08 20:52:44 [INFO] app | HealthAI Coach API shutting down
+2026-04-08 20:52:48 [INFO] app | HealthAI Coach API starting up
+2026-04-08 20:53:42 [INFO] app | upload | dataset=users file=test_users.csv
+2026-04-08 20:53:42 [INFO] etl | pipeline | START dataset=users file=/home/enys/ddddddddddd/uploads/test_users.csv
+2026-04-08 20:53:42 [INFO] etl | extract | file=test_users.csv format=.csv
+2026-04-08 20:53:42 [INFO] etl | extract | rows_raw=7 columns=8
+2026-04-08 20:53:42 [INFO] etl | validate | dataset=users columns_ok=8
+2026-04-08 20:53:42 [INFO] etl | clean | dataset=users rows_in=7
+2026-04-08 20:53:42 [WARNING] etl | clean | users invalid_emails_dropped=1
+2026-04-08 20:53:42 [WARNING] etl | clean | col=age bound=[10,100] rows_dropped=1
+2026-04-08 20:53:42 [INFO] etl | clean | dataset=users rows_out=5 rejected=2
+2026-04-08 20:53:42 [WARNING] etl | load | table=users columns_not_in_db=['objective'] (ignored)
+2026-04-08 20:53:42 [INFO] etl | load | table=users rows=5 columns=['email', 'first_name', 'last_name', 'age', 'gender', 'weight_kg', 'height_cm']
+2026-04-08 20:53:42 [INFO] etl | load | table=users inserted=5
+2026-04-08 20:53:42 [INFO] etl | pipeline | END dataset=users status=success rows_raw=7 rows_clean=5 rows_inserted=5 rejected=2 duration=0.298s

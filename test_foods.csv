@@ -1,0 +1,9 @@
+name,calories_kcal,proteins_g,carbs_g,fats_g,fiber_g,sugars_g,sodium_mg,meal_type
+Oatmeal,150,5.0,27.0,3.0,4.0,1.0,80,breakfast
+Chicken Breast,165,31.0,0.0,3.6,0.0,0.0,74,lunch
+Brown Rice,215,5.0,45.0,1.7,3.5,0.0,10,lunch
+Greek Yogurt,100,10.0,6.0,0.7,0.0,4.0,60,snack
+Banana,89,1.1,23.0,0.3,2.6,12.0,1,snack
+Salmon,208,20.0,0.0,13.0,0.0,0.0,59,dinner
+Almonds,579,21.0,22.0,50.0,12.5,4.4,1,snack
+Invalid Item,-10,5.0,10.0,2.0,1.0,1.0,50,breakfast

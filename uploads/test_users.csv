@@ -1,0 +1,8 @@
+email,first_name,last_name,age,gender,weight_kg,height_cm,objective
+alice@example.com,Alice,Martin,28,female,62.5,168,weight_loss
+bob@example.com,Bob,Dupont,35,male,85.0,180,muscle_gain
+carol@example.com,Carol,Durand,22,female,55.0,165,general_fitness
+david@example.com,David,Lemaire,45,male,90.0,175,weight_loss
+invalid-email,Eve,Moreau,25,female,58.0,162,general_fitness
+ghost@test.com,Frank,Ghost,-5,male,70.0,178,muscle_gain
+hugo@test.com,Hugo,Bernard,30,other,75.0,182,performance
